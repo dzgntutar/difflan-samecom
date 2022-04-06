@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D70F452F-F796-4D22-9A77-E82D81C744E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{63D064B3-EA89-4A9E-9B56-9411CD5D4A09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{18B1FAC1-5847-49E0-9BE8-2D82E16C3415}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{7F53140C-E866-4B89-A7DF-370A65CDCFEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{4292A89A-E4FA-4821-81B4-41DD78B18FFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{0B471FA4-8D91-4C88-85BF-8FED6220F4B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{A02669CF-68ED-414F-92BF-0893AAF10F5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA96CC7C-D595-4CC1-B3BF-F2C50A9F3E41}"
+	ProjectSection(SolutionItems) = preProject
+		note.txt = note.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTar.Services.Product", "Services\Product\TTar.Services.Product\TTar.Services.Product.csproj", "{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTar.Services.Product.Test", "Services\Product\TTar.Services.Product.Test\TTar.Services.Product.Test.csproj", "{6466E0DF-6DA8-487A-A8E6-3191990A8B46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6466E0DF-6DA8-487A-A8E6-3191990A8B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6466E0DF-6DA8-487A-A8E6-3191990A8B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6466E0DF-6DA8-487A-A8E6-3191990A8B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6466E0DF-6DA8-487A-A8E6-3191990A8B46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18B1FAC1-5847-49E0-9BE8-2D82E16C3415} = {D70F452F-F796-4D22-9A77-E82D81C744E7}
+		{7F53140C-E866-4B89-A7DF-370A65CDCFEE} = {D70F452F-F796-4D22-9A77-E82D81C744E7}
+		{4292A89A-E4FA-4821-81B4-41DD78B18FFB} = {D70F452F-F796-4D22-9A77-E82D81C744E7}
+		{0B471FA4-8D91-4C88-85BF-8FED6220F4B9} = {D70F452F-F796-4D22-9A77-E82D81C744E7}
+		{A02669CF-68ED-414F-92BF-0893AAF10F5B} = {D70F452F-F796-4D22-9A77-E82D81C744E7}
+		{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575} = {18B1FAC1-5847-49E0-9BE8-2D82E16C3415}
+		{6466E0DF-6DA8-487A-A8E6-3191990A8B46} = {18B1FAC1-5847-49E0-9BE8-2D82E16C3415}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3690E109-2CFD-445A-8FDA-3E2001C59CD3}
+	EndGlobalSection
+EndGlobal
