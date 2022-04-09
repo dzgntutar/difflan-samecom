@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D70F452F-F796-4D22-9A77-E82D81C744E7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{63D064B3-EA89-4A9E-9B56-9411CD5D4A09}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{63D064B3-EA89-4A9E-9B56-9411CD5D4A09}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{18B1FAC1-5847-49E0-9BE8-2D82E16C3415}"
 EndProject
@@ -22,9 +22,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		note.txt = note.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTar.Services.Product", "Services\Product\TTar.Services.Product\TTar.Services.Product.csproj", "{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTar.Services.Product", "Services\Product\TTar.Services.Product\TTar.Services.Product.csproj", "{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTar.Services.Product.Test", "Services\Product\TTar.Services.Product.Test\TTar.Services.Product.Test.csproj", "{6466E0DF-6DA8-487A-A8E6-3191990A8B46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTar.Services.Product.Test", "Services\Product\TTar.Services.Product.Test\TTar.Services.Product.Test.csproj", "{6466E0DF-6DA8-487A-A8E6-3191990A8B46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ttar.Common", "Common\Ttar.Common\Ttar.Common.csproj", "{FEC1DDA7-CA56-4880-AF3D-F5D75FF8B073}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +42,10 @@ Global
 		{6466E0DF-6DA8-487A-A8E6-3191990A8B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6466E0DF-6DA8-487A-A8E6-3191990A8B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6466E0DF-6DA8-487A-A8E6-3191990A8B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC1DDA7-CA56-4880-AF3D-F5D75FF8B073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC1DDA7-CA56-4880-AF3D-F5D75FF8B073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC1DDA7-CA56-4880-AF3D-F5D75FF8B073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC1DDA7-CA56-4880-AF3D-F5D75FF8B073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{A02669CF-68ED-414F-92BF-0893AAF10F5B} = {D70F452F-F796-4D22-9A77-E82D81C744E7}
 		{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575} = {18B1FAC1-5847-49E0-9BE8-2D82E16C3415}
 		{6466E0DF-6DA8-487A-A8E6-3191990A8B46} = {18B1FAC1-5847-49E0-9BE8-2D82E16C3415}
+		{FEC1DDA7-CA56-4880-AF3D-F5D75FF8B073} = {63D064B3-EA89-4A9E-9B56-9411CD5D4A09}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3690E109-2CFD-445A-8FDA-3E2001C59CD3}
