@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace TTar.Services.Product.Models
+namespace TTar.Services.Product.Models.Entities
 {
     public class Product
     {
