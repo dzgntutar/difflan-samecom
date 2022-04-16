@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Options;
+using TTar.Services.Product.Services;
 using TTar.Services.Product.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.AddSingleton<IDbSettings>(sp =>
 {
     return sp.GetRequiredService<IOptions<DbSettings>>().Value;
 });
+
+builder.Services.AddSingleton<ICategoryService,CategoryService>();
 
 var app = builder.Build();
 
