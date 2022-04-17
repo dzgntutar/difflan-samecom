@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using AutoMapper;
+using MongoDB.Driver;
 using Ttar.Common.Models;
 using TTar.Services.Product.Models.Dto;
 using TTar.Services.Product.Models.Entities;
@@ -9,14 +10,15 @@ namespace TTar.Services.Product.Services
     public class CategoryService : ICategoryService
     {
         private readonly IMongoCollection<Category> _categoryCollection;
+        private readonly IMapper _mapper;
 
 
-        public CategoryService(IDbSettings dbSettings)
+        public CategoryService(IDbSettings dbSettings, IMapper mapper)
         {
+            _mapper = mapper;
+
             var client = new MongoClient(dbSettings.ConnectionString);
-
             var db = client.GetDatabase(dbSettings.DbName);
-
             _categoryCollection = db.GetCollection<Category>(dbSettings.CategoryCollectionName);
         }
 
@@ -25,8 +27,7 @@ namespace TTar.Services.Product.Services
         {
             var categories = await _categoryCollection.Find(f => true).ToListAsync();
 
-            //todo: auto mapping
-            return Response<List<CategoryDto>>.Success(categories.Select(x => new CategoryDto { Id = x.Id, Name = x.Name }).ToList(), 200);
+            return Response<List<CategoryDto>>.Success(_mapper.Map<List<CategoryDto>>(categories), 200);
         }
 
         public async Task<Response<CategoryDto>> GetById(string id)
@@ -36,19 +37,16 @@ namespace TTar.Services.Product.Services
             if (category == null)
                 return Response<CategoryDto>.Fail("Category not found", 404);
 
-            //todo: auto mapping
-            return Response<CategoryDto>.Success(new CategoryDto { Id = category.Id, Name = category.Name }, 200);
+            return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 200);
         }
 
         public async Task<Response<CategoryDto>> Create(CategoryDto category)
         {
-            //todo: auto mapping
-            var newCategory = new Category { Name = category.Name };
+            var newCategory = _mapper.Map<Category>(category);
 
             await _categoryCollection.InsertOneAsync(newCategory);
 
-            //todo: auto mapping
-            return Response<CategoryDto>.Success(new CategoryDto { Id = newCategory.Id, Name = newCategory.Name }, 201);
+            return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(newCategory), 201);
         }
     }
 }
