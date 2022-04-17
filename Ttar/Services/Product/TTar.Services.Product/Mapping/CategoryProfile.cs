@@ -9,6 +9,9 @@ namespace TTar.Services.Product.Mapping
         public CategoryProfile()
         {
             CreateMap<CategoryDto, Category>().ReverseMap();
+            CreateMap<ProductGetDto,Models.Entities.Product>().ReverseMap();
+            CreateMap<ProductCreateDto,Models.Entities.Product>().ReverseMap();
+
         }
     }
 }

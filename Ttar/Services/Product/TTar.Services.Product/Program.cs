@@ -21,6 +21,7 @@ builder.Services.AddSingleton<IDbSettings>(sp =>
 });
 
 builder.Services.AddSingleton<ICategoryService,CategoryService>();
+builder.Services.AddSingleton<IProductService,ProductService>();
 
 var app = builder.Build();
 
