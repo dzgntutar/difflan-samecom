@@ -7,3 +7,10 @@ Basket		-->   5012		--> Redis
 Discount	-->   5013		--> PostgreSQL
 Order		-->   5014		--> Onion Arch
 Payment     -->   5015      --> 
+
+
+automapper
+logging
+error handl
+healtcheck
+

@@ -26,10 +26,10 @@ namespace TTar.Services.Product.Services
             var categories = await _categoryCollection.Find(f => true).ToListAsync();
 
             //todo: auto mapping
-            return Response<List<CategoryDto>>.Success(categories.Select(x => new CategoryDto { Id= x.Id,Name=x.Name}).ToList(),200);
+            return Response<List<CategoryDto>>.Success(categories.Select(x => new CategoryDto { Id = x.Id, Name = x.Name }).ToList(), 200);
         }
 
-        public async Task<Response<CategoryDto>> GetById(int id)
+        public async Task<Response<CategoryDto>> GetById(string id)
         {
             var category = await _categoryCollection.Find(f => f.Id == id).SingleOrDefaultAsync();
 
@@ -37,7 +37,18 @@ namespace TTar.Services.Product.Services
                 return Response<CategoryDto>.Fail("Category not found", 404);
 
             //todo: auto mapping
-            return Response<CategoryDto>.Success(new CategoryDto { Id = category.Id, Name = category.Name }, 200);  
+            return Response<CategoryDto>.Success(new CategoryDto { Id = category.Id, Name = category.Name }, 200);
+        }
+
+        public async Task<Response<CategoryDto>> Create(CategoryDto category)
+        {
+            //todo: auto mapping
+            var newCategory = new Category { Name = category.Name };
+
+            await _categoryCollection.InsertOneAsync(newCategory);
+
+            //todo: auto mapping
+            return Response<CategoryDto>.Success(new CategoryDto { Id = newCategory.Id, Name = newCategory.Name }, 201);
         }
     }
 }

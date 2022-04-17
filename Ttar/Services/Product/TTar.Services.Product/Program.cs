@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Options;
 using TTar.Services.Product.Services;
 using TTar.Services.Product.Settings;
+    
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<DbSettings>(builder.Configuration.GetSection("DbSettings"));
 builder.Services.AddSingleton<IDbSettings>(sp =>
 {
     return sp.GetRequiredService<IOptions<DbSettings>>().Value;

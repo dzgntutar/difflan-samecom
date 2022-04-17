@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{A02669
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA96CC7C-D595-4CC1-B3BF-F2C50A9F3E41}"
 	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
 		note.txt = note.txt
 	EndProjectSection
 EndProject
@@ -26,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTar.Services.Product", "Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTar.Services.Product.Test", "Services\Product\TTar.Services.Product.Test\TTar.Services.Product.Test.csproj", "{6466E0DF-6DA8-487A-A8E6-3191990A8B46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ttar.Common", "Common\Ttar.Common\Ttar.Common.csproj", "{FEC1DDA7-CA56-4880-AF3D-F5D75FF8B073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ttar.Common", "Common\Ttar.Common\Ttar.Common.csproj", "{FEC1DDA7-CA56-4880-AF3D-F5D75FF8B073}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
