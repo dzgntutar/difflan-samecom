@@ -20,7 +20,6 @@ namespace TTar.Services.Product.Controllers
         public async Task<IActionResult> Get()
         {
             var categories = await _categoryService.GetAll();
-
             return new ObjectResult(categories) { StatusCode = categories.HtmlStatusCode };
         }
 
