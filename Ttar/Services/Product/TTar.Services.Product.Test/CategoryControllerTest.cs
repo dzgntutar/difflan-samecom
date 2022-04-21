@@ -43,9 +43,26 @@ namespace TTar.Services.Product.Test
 
             var ok = Assert.IsType<ObjectResult>(result);
 
-            var categories = Assert.IsAssignableFrom<Response<List<CategoryDto>>>(ok.Value);
+            var responseData = Assert.IsAssignableFrom<Response<List<CategoryDto>>>(ok.Value);
 
-            Assert.Equal(categories.Data.ToList().Count, _categories.Count);
+            Assert.Equal(responseData.Data.ToList().Count, _categories.Count);
+        }
+
+        [Theory]
+        [InlineData("0")]
+        public async void GetCategoryById_InvalidId_ReturnNotFound(string id)
+        {
+            var data = Response<CategoryDto>.Fail("Category not found", 404);
+
+            _mockService.Setup(x => x.GetById(id)).ReturnsAsync(data);
+
+            var result = await _categoryController.Get(id);
+
+            var notFound = Assert.IsType<ObjectResult>(result);
+
+            var responseData = Assert.IsAssignableFrom<Response<CategoryDto>>(notFound.Value);
+
+            Assert.NotNull(responseData.Errors);
         }
     }
 }
