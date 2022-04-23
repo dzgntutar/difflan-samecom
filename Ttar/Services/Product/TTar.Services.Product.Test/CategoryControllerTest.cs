@@ -64,5 +64,45 @@ namespace TTar.Services.Product.Test
 
             Assert.NotNull(responseData.Errors);
         }
+
+        [Theory]
+        [InlineData("1")]
+        [InlineData("3")]
+        public async void GetCategoryById_ValidId_ReturnNotFound(string id)
+        {
+            var category = _categories.FirstOrDefault(_ => _.Id == id) ?? new CategoryDto(); 
+
+            var data = Response<CategoryDto>.Success(category, 200);
+
+            _mockService.Setup(x => x.GetById(id)).ReturnsAsync(data);
+
+            var result = await _categoryController.Get(id);
+
+            var message = Assert.IsType<ObjectResult>(result);
+
+            var responseData = Assert.IsAssignableFrom<Response<CategoryDto>>(message.Value);
+
+            Assert.Equal(responseData.Data.Id,category.Id);
+            Assert.Equal(responseData.Data.Name, category.Name);
+
+        }
+
+        [Fact]
+        public async void InsertCategory_Execute_ReturnCreatedAtAction()
+        {
+            var category = _categories.First();
+
+            var data = Response<CategoryDto>.Success(category, 201);
+
+            _mockService.Setup(x => x.Create(category)).ReturnsAsync(data);
+
+            var result = await _categoryController.Post(category);
+
+            var createdAtAction = Assert.IsType<ObjectResult>(result);
+
+            _mockService.Verify(x => x.Create(category), Times.Once);
+
+            Assert.Equal(201, createdAtAction.StatusCode);
+        }
     }
 }
