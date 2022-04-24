@@ -26,9 +26,9 @@ namespace TTar.Services.Product.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            var category = await _categoryService.GetById(id);  
+            var category = await _categoryService.GetById(id);
 
-            return new ObjectResult(category) { StatusCode = category.HtmlStatusCode};
+            return new ObjectResult(category) { StatusCode = category.HtmlStatusCode };
         }
 
         [HttpPost]

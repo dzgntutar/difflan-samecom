@@ -1,8 +1,8 @@
 version: '3.1'
 services:
-  mongo:
+  mongodb:
     image: mongo
-    container_name: myMongoDb
+    container_name: container_mongodb
     ports:
       - 27017:27017
     restart: always
@@ -12,6 +12,17 @@ services:
       - MONGO_INITDB_DATABASE=test
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
+
+  product.api:
+    image: product_api_image
+    container_name: container_product_api
+    build:
+      context: .
+      dockerfile: Services/Product/Ttar.Services.Product/Dockerfile
+    depends_on:
+      - mongodb
+    ports:
+      - 5011:80
 
 
 volumes:
