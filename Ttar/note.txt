@@ -3,7 +3,7 @@ Gateway     -->   5000		--> Ocelot
 IS          -->   5001
 WEB			-->   5010		--> VUE.JS
 Product		-->   5011		--> Mongo db
-Basket		-->   5012		--> Redis
+Basket		-->   5012		--> Redis  and Golang
 Discount	-->   5013		--> PostgreSQL
 Order		-->   5014		--> Onion Arch
 Payment     -->   5015      --> 
