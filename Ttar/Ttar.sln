@@ -23,9 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		note.txt = note.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTar.Services.Product", "Services\Product\TTar.Services.Product\TTar.Services.Product.csproj", "{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ttar.Services.Product", "Services\Product\TTar.Services.Product\Ttar.Services.Product.csproj", "{A0EF6CC8-4EBD-4CA7-B917-2DD6CC945575}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTar.Services.Product.Test", "Services\Product\TTar.Services.Product.Test\TTar.Services.Product.Test.csproj", "{6466E0DF-6DA8-487A-A8E6-3191990A8B46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ttar.Services.Product.Test", "Services\Product\TTar.Services.Product.Test\Ttar.Services.Product.Test.csproj", "{6466E0DF-6DA8-487A-A8E6-3191990A8B46}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ttar.Common", "Common\Ttar.Common\Ttar.Common.csproj", "{FEC1DDA7-CA56-4880-AF3D-F5D75FF8B073}"
 EndProject
