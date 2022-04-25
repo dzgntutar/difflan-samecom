@@ -1,12 +1,12 @@
 package main
 
 import (
-	"basket/pkg/route"
+	. "basket/pkg/route"
 	"net/http"
 )
 
 func main() {
-	http.HandleFunc("/", route.CreateBasket)
+	http.HandleFunc("/", BasketRoute)
 
 	http.ListenAndServe(":5012", nil)
 }

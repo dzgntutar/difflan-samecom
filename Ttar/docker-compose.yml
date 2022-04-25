@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 services:
   mongodb:
     image: mongo
@@ -7,11 +7,19 @@ services:
       - 27017:27017
     restart: always
     volumes:
-      - mongodb:/data/db 
+      - mongodb:/data/db
     environment:
       - MONGO_INITDB_DATABASE=test
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
+
+  redisdb:
+    image: redis
+    container_name: container_redisdb
+    ports:
+      - 6379:6379
+    volumes:
+      - cache:/data
 
   product.api:
     image: product_api_image
@@ -24,6 +32,6 @@ services:
     ports:
       - 5011:80
 
-
 volumes:
   mongodb:
+  cache:

@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func CreateBasket(w http.ResponseWriter, r *http.Request) {
+func BasketRoute(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		getHandler(w, r)
