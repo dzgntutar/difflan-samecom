@@ -1,25 +1,26 @@
 package main
 
 import (
-	. "basket/pkg/handler"
-	myredis "basket/pkg/redis"
+	handlers_p "basket/pkg/handler"
+	redis_p "basket/pkg/redis"
 	"fmt"
+	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 )
 
 func main() {
 
-	config := myredis.NewRedisClient("", "", 0)
+	config := redis_p.NewRedisClient("", "", 0)
 
-	fmt.Println(config)
+	router := mux.NewRouter()
 
-	mux := http.NewServeMux()
-	mux.Handle("/api/basket", BasketHandler(config))
+	router.HandleFunc("/api/basket/{id:[0-9]+}", handlers_p.GetHandler(config)).Methods("GET")
+	router.HandleFunc("/api/basket", handlers_p.CreateHandler(config)).Methods("POST")
 
 	fmt.Println("Serving on port 5012")
 
-	err := http.ListenAndServe(":5012", mux)
-	log.Fatal(err)
+	fmt.Printf("Server started at %s\n", ":5012")
+	log.Fatal(http.ListenAndServe(":5012", router))
 
 }

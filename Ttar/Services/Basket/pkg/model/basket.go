@@ -3,7 +3,7 @@ package model
 type Basket struct {
 	UserId       string
 	DiscountCode string
-	DiscourRate  int
+	DiscountRate int
 	BasketItem   []BasketItem
 	TotalPrice   float32
 }

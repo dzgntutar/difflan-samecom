@@ -1,50 +1,52 @@
-package handlers
+package handlers_p
 
 import (
 	. "basket/pkg/model"
 	"basket/pkg/redis"
 	"encoding/json"
 	"fmt"
+	"github.com/gorilla/mux"
 	"net/http"
+	"strconv"
 )
 
-func BasketHandler(redisConfig *redis.RedisConfig) http.Handler {
-	fmt.Println(redisConfig)
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.Method {
-		case "GET":
-			data, _ := redisConfig.GetStringValue("basket")
-			w.Write([]byte(data))
+func CreateHandler(redisConfig *redis_p.RedisConfig) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var basket Basket
 
-		case "POST":
-			basket := Basket{
-				UserId:       "asdfasdf",
-				DiscountCode: "12AA",
-				DiscourRate:  25,
-				BasketItem: []BasketItem{
-					{Quantity: 12, ProductId: "asfasdf", ProductName: "name", Price: 12},
-				},
-			}
-			
-			var totalP float32
-			for _, value := range basket.BasketItem {
-				totalP += float32(value.Quantity) * value.Price
-			}
-			basket.TotalPrice = totalP
+		decoder := json.NewDecoder(r.Body)
 
-			data, _ := json.Marshal(basket)
-
-			strData := string(data)
-
-			redisConfig.SetStringValue("basket", strData)
-
-			w.Write([]byte(data))
-
-		default:
-			w.WriteHeader(http.StatusNotImplemented)
-			w.Write([]byte(http.StatusText(http.StatusNotImplemented)))
-			w.WriteHeader(http.StatusOK)
-			w.Write([]byte("Get"))
+		if err := decoder.Decode(&basket); err != nil {
+			return
 		}
-	})
+		defer r.Body.Close()
+
+		var totalP float32
+		for _, value := range basket.BasketItem {
+			totalP += float32(value.Quantity) * value.Price
+		}
+		basket.TotalPrice = totalP
+
+		fmt.Println(basket)
+
+		data, _ := json.Marshal(basket)
+
+		strData := string(data)
+
+		redisConfig.SetStringValue(basket.UserId, strData)
+	}
+}
+
+func GetHandler(redisConfig *redis_p.RedisConfig) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		vars := mux.Vars(r)
+		id, err := strconv.Atoi(vars["id"])
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Println(id)
+		data, _ := redisConfig.GetStringValue("basket")
+		fmt.Println(data)
+	}
 }

@@ -1,4 +1,4 @@
-package redis
+package redis_p
 
 import (
 	"log"
@@ -28,7 +28,7 @@ func (r RedisConfig) Ping() string {
 
 func (r RedisConfig) GetStringValue(key string) (string, error) {
 	if value, err := r.client.Get(key).Result(); err != nil {
-		return "", err
+		return "Basket not found", err
 	} else {
 		return value, nil
 	}
