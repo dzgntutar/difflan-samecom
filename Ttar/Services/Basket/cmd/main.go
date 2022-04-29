@@ -15,7 +15,7 @@ func main() {
 	fmt.Println(config)
 
 	mux := http.NewServeMux()
-	mux.Handle("/basket", BasketHandler(config))
+	mux.Handle("/api/basket", BasketHandler(config))
 
 	fmt.Println("Serving on port 5012")
 

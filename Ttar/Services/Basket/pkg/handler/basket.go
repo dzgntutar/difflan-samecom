@@ -1,7 +1,9 @@
 package handlers
 
 import (
+	. "basket/pkg/model"
 	"basket/pkg/redis"
+	"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -11,13 +13,33 @@ func BasketHandler(redisConfig *redis.RedisConfig) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case "GET":
-			value := redisConfig.Ping()
-			w.Write([]byte("Received a GET request\n"))
-			w.Write([]byte(value))
+			data, _ := redisConfig.GetStringValue("basket")
+			w.Write([]byte(data))
 
 		case "POST":
+			basket := Basket{
+				UserId:       "asdfasdf",
+				DiscountCode: "12AA",
+				DiscourRate:  25,
+				BasketItem: []BasketItem{
+					{Quantity: 12, ProductId: "asfasdf", ProductName: "name", Price: 12},
+				},
+			}
+			
+			var totalP float32
+			for _, value := range basket.BasketItem {
+				totalP += float32(value.Quantity) * value.Price
+			}
+			basket.TotalPrice = totalP
 
-			w.Write([]byte("Received a POST request\n"))
+			data, _ := json.Marshal(basket)
+
+			strData := string(data)
+
+			redisConfig.SetStringValue("basket", strData)
+
+			w.Write([]byte(data))
+
 		default:
 			w.WriteHeader(http.StatusNotImplemented)
 			w.Write([]byte(http.StatusText(http.StatusNotImplemented)))
@@ -25,5 +47,4 @@ func BasketHandler(redisConfig *redis.RedisConfig) http.Handler {
 			w.Write([]byte("Get"))
 		}
 	})
-
 }
