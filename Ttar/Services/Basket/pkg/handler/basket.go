@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"github.com/gorilla/mux"
 	"net/http"
-	"strconv"
 )
 
 func CreateHandler(redisConfig *redis_p.RedisConfig) http.HandlerFunc {
@@ -42,14 +41,9 @@ func CreateHandler(redisConfig *redis_p.RedisConfig) http.HandlerFunc {
 func GetHandler(redisConfig *redis_p.RedisConfig) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
-		id, err := strconv.Atoi(vars["id"])
+		id := vars["id"]
 
-		if err != nil {
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusBadRequest)
-			w.Write([]byte("Bad request"))
-		}
-		if data, err := redisConfig.GetStringValue(string(id)); err != nil {
+		if data, err := redisConfig.GetStringValue(id); err != nil {
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusNotFound)
 			w.Write([]byte("Basket not found"))
