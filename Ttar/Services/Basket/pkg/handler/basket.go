@@ -2,10 +2,11 @@ package handlers_p
 
 import (
 	. "basket/pkg/model"
-	"basket/pkg/redis"
+	redis_p "basket/pkg/redis"
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func CreateHandler(redisConfig *redis_p.RedisConfig) http.HandlerFunc {
@@ -52,5 +53,15 @@ func GetHandler(redisConfig *redis_p.RedisConfig) http.HandlerFunc {
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(data))
 		}
+	}
+}
+
+func TestHandler() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("Success"))
+
 	}
 }

@@ -1,6 +1,5 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 as build
 WORKDIR /app
-#EXPOSE 5011:80
 COPY Common/Ttar.Common/*.csproj Common/Ttar.Common/
 COPY Services/Product/Ttar.Services.Product/*.csproj Services/Product/Ttar.Services.Product/
 RUN dotnet restore Services/Product/Ttar.Services.Product/*.csproj

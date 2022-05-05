@@ -1,17 +1,17 @@
 version: "3.1"
 services:
-  mongodb:
-    image: mongo
-    container_name: container_mongodb
-    ports:
-      - 27017:27017
-    restart: always
-    volumes:
-      - mongodb:/data/db
-    environment:
-      - MONGO_INITDB_DATABASE=test
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=admin
+  # mongodb:
+  #   image: mongo
+  #   container_name: container_mongodb
+  #   ports:
+  #     - 27017:27017
+  #   restart: always
+  #   volumes:
+  #     - mongodb:/data/db
+  #   environment:
+  #     - MONGO_INITDB_DATABASE=test
+  #     - MONGO_INITDB_ROOT_USERNAME=admin
+  #     - MONGO_INITDB_ROOT_PASSWORD=admin
 
   redisdb:
     image: redis
@@ -21,17 +21,27 @@ services:
     volumes:
       - cache:/data
 
-  product.api:
-    image: product_api_image
-    container_name: container_product_api
+  # product.api:
+  #   image: product_api_image
+  #   container_name: container_product_api
+  #   build:
+  #     context: .
+  #     dockerfile: Services/Product/Ttar.Services.Product/Dockerfile
+  #   depends_on:
+  #     - mongodb
+  #   ports:
+  #     - 5011:80
+
+  basket.api:
+    image: basket_api_image
+    container_name: container_basket_api
     build:
       context: .
-      dockerfile: Services/Product/Ttar.Services.Product/Dockerfile
+      dockerfile: Services/Basket/Dockerfile
     depends_on:
-      - mongodb
+      - redisdb
     ports:
-      - 5011:80
-
+      - 5012:5012
 volumes:
-  mongodb:
+  # mongodb:
   cache:
