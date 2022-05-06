@@ -1,4 +1,4 @@
-package redis_p
+package redisServices
 
 import (
 	"log"
