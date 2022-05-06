@@ -2,9 +2,9 @@
 Gateway     -->   5000		--> Ocelot
 IS          -->   5001
 WEB			-->   5010		--> VUE.JS
-Product		-->   5011		--> Mongo db
+Product		-->   5011		--> MongoDb and dotnet6 
 Basket		-->   5012		--> Redis  and Golang
-Discount	-->   5013		--> PostgreSQL
+Discount	-->   5013		--> PostgreSQL and Golang
 Order		-->   5014		--> Onion Arch
 Payment     -->   5015      --> 
 
