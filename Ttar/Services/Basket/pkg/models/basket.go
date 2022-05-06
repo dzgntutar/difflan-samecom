@@ -1,4 +1,4 @@
-package model
+package models
 
 type Basket struct {
 	UserId       string
@@ -6,11 +6,4 @@ type Basket struct {
 	DiscountRate int
 	BasketItem   []BasketItem
 	TotalPrice   float32
-}
-
-type BasketItem struct {
-	Quantity    int
-	ProductId   string
-	ProductName string
-	Price       float32
 }

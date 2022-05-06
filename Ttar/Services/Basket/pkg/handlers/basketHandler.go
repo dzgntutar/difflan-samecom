@@ -1,7 +1,7 @@
 package basketHandler
 
 import (
-	. "basket/pkg/model"
+	"basket/pkg/models"
 	redisService "basket/pkg/services"
 	"encoding/json"
 	"net/http"
@@ -11,7 +11,7 @@ import (
 
 func CreateHandler(redisService *redisService.RedisConfig) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var basket Basket
+		var basket models.Basket
 
 		decoder := json.NewDecoder(r.Body)
 		defer r.Body.Close()
