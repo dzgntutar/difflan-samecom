@@ -1,40 +1,51 @@
 version: "3.1"
 services:
-  # mongodb:
-  #   image: mongo
-  #   container_name: container_mongodb
-  #   ports:
-  #     - 27017:27017
-  #   restart: always
-  #   volumes:
-  #     - mongodb:/data/db
-  #   environment:
-  #     - MONGO_INITDB_DATABASE=test
-  #     - MONGO_INITDB_ROOT_USERNAME=admin
-  #     - MONGO_INITDB_ROOT_PASSWORD=admin
+  mongodb:
+    image: mongo
+    container_name: c_mongodb
+    ports:
+      - 27017:27017
+    restart: always
+    volumes:
+      - mongodb:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=test
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
 
   redisdb:
     image: redis
-    container_name: container_redisdb
+    container_name: c_redisdb
     ports:
       - 6379:6379
     volumes:
       - cache:/data
 
-  # product.api:
-  #   image: product_api_image
-  #   container_name: container_product_api
-  #   build:
-  #     context: .
-  #     dockerfile: Services/Product/Ttar.Services.Product/Dockerfile
-  #   depends_on:
-  #     - mongodb
-  #   ports:
-  #     - 5011:80
+  postgredb:
+    image: postgres
+    container_name: c_postgredb
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Password1*
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  product.api:
+    image: product_api_image
+    container_name: c_product_api
+    build:
+      context: .
+      dockerfile: Services/Product/Ttar.Services.Product/Dockerfile
+    depends_on:
+      - mongodb
+    ports:
+      - 5011:80
 
   basket.api:
     image: basket_api_image
-    container_name: container_basket_api
+    container_name: c_basket_api
     build:
       context: .
       dockerfile: Services/Basket/Dockerfile
@@ -42,6 +53,18 @@ services:
       - redisdb
     ports:
       - 5012:5012
+
+  discount.api:
+    image: discount_api_image
+    container_name: c_discount_api
+    build:
+      context: .
+      dockerfile: Services/Discount/Dockerfile
+    depends_on:
+      - postgredb
+    ports:
+      - 5013:5013
 volumes:
-  # mongodb:
+  mongodb:
   cache:
+  pgdata:
