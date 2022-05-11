@@ -1,11 +1,12 @@
 version: "3.1"
+
 services:
   mongodb:
     image: mongo
     container_name: c_mongodb
     ports:
       - 27017:27017
-    restart: always
+    # restart: always
     volumes:
       - mongodb:/data/db
     environment:
@@ -24,7 +25,7 @@ services:
   postgredb:
     image: postgres
     container_name: c_postgredb
-    restart: always
+    # restart: always
     environment:
       POSTGRES_PASSWORD: Password1*
     volumes:
@@ -64,6 +65,7 @@ services:
       - postgredb
     ports:
       - 5013:5013
+
 volumes:
   mongodb:
   cache:
